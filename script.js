@@ -1,18 +1,21 @@
 const container = document.getElementById("container");
 
 
-function sixteen(){
-    for(let x = 0; x<16; x++){
+function createGrid(perSide){
+    for(let x = 0; x<(perSide*perSide); x++){
+        const percent = 100/perSide;
         let div = document.createElement("div");
-        div.classList.add("sub");
+        console.log(percent);
+        div.style.width = `${percent}%`;
+        div.style.display = "inline-block";
+        div.style.paddingBottom = `${percent}%`;
         div.addEventListener("mouseover",  changeColor);
         div.addEventListener("mousedown",  changeColor);
-        console.log("hi")
         container.appendChild(div);
     }
 }
 
-sixteen()
+createGrid(50);
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);

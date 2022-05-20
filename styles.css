@@ -1,7 +1,6 @@
 
 
-#container{
-    margin-top: 30vw;
+#container{ 
     display: flex;
     flex-wrap: wrap;
     background: #000;

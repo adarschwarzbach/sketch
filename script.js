@@ -10,7 +10,7 @@ document.getElementById('black').onclick = () => changeMode('black');
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
-document.getElementById('reset').onclick = () => changeMode('reset');
+document.getElementById('reset').onclick = () => reset();
 
 
 
@@ -18,7 +18,14 @@ function changeMode(newMode){
     mode = newMode;
     console.log(mode);
 }
-
+function reset(){
+    let child = container.lastElementChild; 
+    while(child){
+        container.removeChild(child);
+        child = container.lastElementChild;
+    }
+    createGrid(DEFUALT_SIZE);
+}
 
 
 

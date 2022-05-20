@@ -20,6 +20,7 @@ document.getElementById('reset').onclick = () => reset();
 function changePick(e){
     console.log(e)
     pickedColor = e;
+    document.getElementById('a').style.color = `${e}`;
 }
 function changeMode(newMode){
     mode = newMode;

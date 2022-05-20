@@ -1,7 +1,7 @@
 
 
 #container{
-    margin-top: 40%;
+    margin-top: 30vw;
     display: flex;
     flex-wrap: wrap;
     background: #000;
@@ -10,7 +10,11 @@
     border: 4px solid aqua;
 }
 
-
+/* it apears that with the container set as it is
+and the sub set is it is with width and height being an equal
+percent corrosponding to side length
+this will work for grid.
+should be easy from here out if these principles are true */
 .sub{
     display: inline-block;
     width: 25%;

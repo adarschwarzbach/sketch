@@ -12,7 +12,7 @@ console.log(mode)
 document.getElementById('black').onclick = () => changeMode('black');
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('pick').onchange = (e) => changePick(e.target.value);
-document.getElementById('rainbow').onchange = () => changeMode('rainbow');
+document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
 
@@ -90,10 +90,8 @@ function changeColor(e){
         case 'eraser':
             e.target.style.backgroundColor = "white";
             break;
-
         case 'pick':
             e.target.style.backgroundColor = `${pickedColor}`;
-            console.log(`${pickedColor}`);
             break;
     }
 }

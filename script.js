@@ -1,6 +1,33 @@
+const DEFAULT_MODE = 'black'
+const DEFUALT_SIZE = 40;
+
+let mode = DEFAULT_MODE;
+console.log(mode)
 
 
 
+document.getElementById('black').onclick = () => changeMode('black');
+document.getElementById('pick').onclick = () => changeMode('pick');
+document.getElementById('rainbow').onclick = () => changeMode('rainbow');
+document.getElementById('eraser').onclick = () => changeMode('eraser');
+document.getElementById('reset').onclick = () => changeMode('reset');
+
+
+
+function changeMode(newMode){
+    mode = newMode;
+    console.log(mode);
+}
+
+
+
+
+
+
+
+
+// make it so that when a button is active, the button
+// represents that somehow
 
 
 function createGrid(perSide){
@@ -8,7 +35,6 @@ function createGrid(perSide){
     for(let x = 0; x<(perSide*perSide); x++){
         const percent = 100/perSide;
         let div = document.createElement("div");
-        console.log(percent);
         div.style.width = `${percent}%`;
         div.style.display = "inline-block";
         div.style.paddingBottom = `${percent}%`;
@@ -18,15 +44,16 @@ function createGrid(perSide){
     }
 }
 
-createGrid(50);
-let mode = 'rainbow';
 
 
-function reset(){
-    createGrid(16);
-    let mode = 'black';
 
-}
+
+// function reset(){
+//     createGrid(16);
+//     let mode = 'black';
+// }
+
+createGrid(40);
 
 
 // global to ensure user intends to draw (mousedown)
@@ -49,6 +76,7 @@ function changeColor(e){
         case 'eraser':
             e.target.style.backgroundColor = "white";
             break;
+
         case 'choose':
             break;
     }

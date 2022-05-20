@@ -1,30 +1,37 @@
 const DEFAULT_MODE = 'black'
 const DEFUALT_SIZE = 40;
 
+let currentSize = DEFUALT_SIZE;
 let mode = DEFAULT_MODE;
+let pickedColor = 'black'
+
 console.log(mode)
 
 
 
 document.getElementById('black').onclick = () => changeMode('black');
 document.getElementById('pick').onclick = () => changeMode('pick');
-document.getElementById('rainbow').onclick = () => changeMode('rainbow');
+document.getElementById('pick').onchange = (e) => changePick(e.target.value);
+document.getElementById('rainbow').onchange = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
 
 
-
+function changePick(e){
+    console.log(e)
+    pickedColor = e;
+}
 function changeMode(newMode){
     mode = newMode;
-    console.log(mode);
 }
+
 function reset(){
     let child = container.lastElementChild; 
     while(child){
         container.removeChild(child);
         child = container.lastElementChild;
     }
-    createGrid(DEFUALT_SIZE);
+    createGrid(currentSize);
 }
 
 
@@ -84,7 +91,9 @@ function changeColor(e){
             e.target.style.backgroundColor = "white";
             break;
 
-        case 'choose':
+        case 'pick':
+            e.target.style.backgroundColor = `${pickedColor}`;
+            console.log(`${pickedColor}`);
             break;
     }
 }

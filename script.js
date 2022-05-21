@@ -1,21 +1,25 @@
+
+// Initialize settings
 const DEFAULT_MODE = 'standard'
 const DEFUALT_SIZE = 40;
 
+let currentSize = DEFUALT_SIZE;
+let mode = DEFAULT_MODE;
+let pickedColor = RED;
+
+createGrid(40);
+
+// Initialize colors
 const PURPLE = '#581845';
 const MAROON = '#900c3f';
 const RED = '#c70039';
 const ORANGE = '#ff5733';
 const YELLOW = '#ffc20f';
 
-let currentSize = DEFUALT_SIZE;
-let mode = DEFAULT_MODE;
-let pickedColor = RED;
 
 
-createGrid(40);;
-
-
-
+// Add event listeners to buttons/slider
+// Listed chronologically 
 document.getElementById('standard').onclick = () => changeMode('standard');
 document.getElementById('palette').onclick = () => changeMode('palette');
 
@@ -33,14 +37,18 @@ document.getElementById('slider').onmousemove = (e) => resize(e.target.value);
 document.getElementById('slider').onchange = (e) => updateSizeLabel(e.target.value);
 
 
+// change mode based on user input
+function changeMode(newMode){
+    mode = newMode;
+}
 
-
-
+// Change color variable from user input
 function changePick(e){
     pickedColor = e;
     document.getElementById('a').style.color = `${e}`;
 }
 
+// These 2 functions together create the dynamic hover effect for "raimbow button"
 function complementBackgroundPick(){
     if(pickedColor== RED){
         document.getElementById('pick').style.backgroundColor = '#FC4F4F';
@@ -54,22 +62,16 @@ function resetBackgroundPick(){
     document.getElementById('pick').style.backgroundColor = 'rgb(236, 204, 200)';
 }
 
-function changeMode(newMode){
-    mode = newMode;
-}
 
-function clearGrid(){
-    let child = container.lastElementChild; 
-    while(child){
-        container.removeChild(child);
-        child = container.lastElementChild;
-    }
-}
 
+
+//clear grid - keep size
 function reset(){
     clearGrid();
     createGrid(currentSize);
 }
+
+// resize grid based on slider input
 function resize(e){
     if(mouseDown){
         currentSize = e;
@@ -78,7 +80,17 @@ function resize(e){
     }
 }
 
+// completely clear grid
+function clearGrid(){
+    let child = container.lastElementChild; 
+    while(child){
+        container.removeChild(child);
+        child = container.lastElementChild;
+    }
+}
 
+
+// update displayed grid size based on slider input
 function updateSizeLabel(e){
     document.getElementById('gridSize').textContent= `${e} x ${e}`;
 }
@@ -86,10 +98,7 @@ function updateSizeLabel(e){
 
 
 
-// make it so that when a button is active, the button
-// represents that somehow
-
-
+//create responsive grid
 function createGrid(perSide){
     const container = document.getElementById("container");
     for(let x = 0; x<(perSide*perSide); x++){
@@ -106,17 +115,12 @@ function createGrid(perSide){
 
 
 
-
-
-
-
-
-
 // global to ensure user intends to draw (mousedown)
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+// function to set drawing mode based on user input
 function changeColor(e){
     if(e.type== 'mouseover' && !mouseDown) return;
     switch(mode){

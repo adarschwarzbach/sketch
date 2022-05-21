@@ -1,7 +1,6 @@
+/* Stylesheet sorted by first appearence on page */
 
-/* fix window sizing, size bar shift */
-/* fix pallete drawing */
-
+/* header */
 #header{
     text-align: center;
     background-color: #581845;
@@ -14,7 +13,7 @@
     font-weight: bold;
 }
 
-
+/* button styling and hover effects */
 #controls{
     display: flex;
     gap: 12px;
@@ -59,6 +58,7 @@
     background-color: white;
     color: white;
 }
+
 
 #rainbow:hover{
     background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
@@ -156,15 +156,6 @@ body{
     overflow: hidden;
 }
 
-img{
-    width: 22px;
-    padding-left: 8px;
-    transition: transform .6s ease-in-out;
-}
-
-img:hover{
-    transform: rotate(360deg);
-}
 
 html{
     /* support footer when window is resized */
@@ -178,4 +169,15 @@ a{
     color: #ff5733 ;
     font-weight: bold;
     display: flex;
+}
+
+/* spinning github logo/link */
+img{
+    width: 22px;
+    padding-left: 8px;
+    transition: transform .6s ease-in-out;
+}
+
+img:hover{
+    transform: rotate(360deg);
 }

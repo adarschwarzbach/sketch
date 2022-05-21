@@ -5,12 +5,21 @@
     text-align: center;
     background-color: #581845;
     width: 100vw;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     color: #ff5733;
     font-size: 36px;
     padding: 24px;
     font-family: 'Press Start 2P', cursive;
     font-weight: bold;
+}
+
+#instructions{
+    text-align: center;
+    font-family: 'OCR A Std, TeX Gyre Schola, serif';
+    font-weight: bold;
+    color: #581845;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 /* button styling and hover effects */
@@ -20,7 +29,7 @@
     justify-content: center;
 }
 
-.buttons{
+.buttons.begin{
     display: flex;
     justify-content: center;
     align-items: center;

@@ -33,7 +33,7 @@ document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
 document.getElementById('slider').onclick = (e) => resize(e.target.value);
-document.getElementById('slider').onchange = (e) => updateSizeLabel(e.target.value);
+document.getElementById('slider').oninput = (e) => updateSizeLabel(e.target.value);
 
 
 
@@ -86,6 +86,9 @@ function resize(e){
         currentSize = e;
         clearGrid();
         createGrid(currentSize);
+        if(mode=='eraser'){
+            mode = 'standard';
+        }
 }
 
 // update displayed grid size based on slider input

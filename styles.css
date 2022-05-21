@@ -88,6 +88,17 @@ should be easy from here out if these principles are true */
     padding-bottom: 25%;
 }
 
+#slider-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #c70039;
+}
+
 #slider{
     -webkit-appearance: none;
     background-color: var(--primary-light);
@@ -118,6 +129,8 @@ body{
     justify-items: center;
     background-color: rgb(239, 239, 239);
 }
+
+/* consider making a square that runs across the page left to right */
 
 
 #footer{

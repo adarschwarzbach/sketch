@@ -12,31 +12,62 @@ console.log(mode)
 document.getElementById('standard').onclick = () => changeMode('standard');
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('pick').onchange = (e) => changePick(e.target.value);
+
+document.getElementById('pick').onmouseenter = () => complementBackgroundPick();
+document.getElementById('pick').onmouseleave = () => resetBackgroundPick();
+
+
 document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
+document.getElementById('slider').onmousemove = (e) => resize(e.target.value);
+document.getElementById('slider').onchange = (e) => updateSizeLabel(e.target.value);
+
+
+
 
 
 function changePick(e){
-    console.log(e)
     pickedColor = e;
     document.getElementById('a').style.color = `${e}`;
 }
+
+function complementBackgroundPick(){
+    document.getElementById('pick').style.backgroundColor = pickedColor;
+}
+
+function resetBackgroundPick(){
+    document.getElementById('pick').style.backgroundColor = 'rgb(236, 204, 200)';
+}
+
 function changeMode(newMode){
     mode = newMode;
 }
 
-function reset(){
+function clearGrid(){
     let child = container.lastElementChild; 
     while(child){
         container.removeChild(child);
         child = container.lastElementChild;
     }
+}
+
+function reset(){
+    clearGrid();
     createGrid(currentSize);
+}
+function resize(e){
+    if(mouseDown){
+        currentSize = e;
+        clearGrid();
+        createGrid(currentSize);
+    }
 }
 
 
-
+function updateSizeLabel(e){
+    document.getElementById('gridSize').textContent= `${e} x ${e}`;
+}
 
 
 

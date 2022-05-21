@@ -1,5 +1,5 @@
 
-// Initialize settings
+// Initialize page/variables
 const DEFAULT_MODE = 'start'
 const DEFUALT_SIZE = 40;
 const DEFAULT_BUTTON_BORDER = '3px solid #c70039';
@@ -15,28 +15,36 @@ let currentSize = DEFUALT_SIZE;
 let mode = DEFAULT_MODE;
 let pickedColor = RED;
 
+denoteMode('start');
 
 createGrid(40);
 
 
 // Add event listeners to buttons/slider
-// Listed chronologically 
+// On click events are for button function
 document.getElementById('standard').onclick = () => changeMode('standard');
 document.getElementById('palette').onclick = () => changeMode('palette');
 
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('pick').onchange = (e) => changePick(e.target.value);
 
-document.getElementById('pick').onmouseenter = () => complementBackgroundPick();
-document.getElementById('pick').onmouseleave = () => resetBackgroundPick();
-
-
 document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
+
+// Event listeners for resizing grid
 document.getElementById('slider').onclick = (e) => resize(e.target.value);
 document.getElementById('slider').oninput = (e) => updateSizeLabel(e.target.value);
 
+// Event listeners for hover effect
+document.getElementById('pick').onmouseenter = () => hoverPickA();
+document.getElementById('pick').onmouseleave = () => hoverPickB();
+
+document.getElementById('standard').onmouseenter = () => hoverStandardA();
+document.getElementById('standard').onmouseleave = () => hoverStandardB();
+
+document.getElementById('eraser').onmouseenter = () => hoverEraserA();
+document.getElementById('eraser').onmouseleave = () => hoverEraserB();
 
 
 
@@ -46,8 +54,40 @@ function changePick(e){
     document.getElementById('a').style.color = `${e}`;
 }
 
-// These 2 functions together create the dynamic hover effect for "raimbow button"
-function complementBackgroundPick(){
+// The A and B function together create "hover" effect for Eraser button
+function hoverEraserA(){
+    document.getElementById('eraser').style.backgroundColor = "white";
+    document.getElementById('eraser').style.color = "white";
+}
+
+function hoverEraserB(){
+    if(mode == 'eraser'){
+        document.getElementById('eraser').style.backgroundColor = MAROON;
+    }
+    else{
+        document.getElementById('eraser').style.backgroundColor = 'rgb(236, 204, 200)';
+        document.getElementById('eraser').style.color = MAROON;
+    }
+}
+
+// The A and B function together create "hover" effect for Standard button
+function hoverStandardA(){
+    document.getElementById('standard').style.backgroundColor = RED;
+}
+
+function hoverStandardB(){
+    if(mode == 'standard'){
+        document.getElementById('standard').style.backgroundColor = MAROON;
+    }
+    else{
+        document.getElementById('standard').style.backgroundColor = 'rgb(236, 204, 200)';
+    }
+}
+
+
+
+// The A and B function together create "hover" effect for Rainbow button
+function hoverPickA(){
     if(pickedColor== RED){
         document.getElementById('pick').style.backgroundColor = '#FC4F4F';
     }
@@ -56,7 +96,7 @@ function complementBackgroundPick(){
     }
 }
 
-function resetBackgroundPick(){
+function hoverPickB(){
     if(mode == 'pick'){
         document.getElementById('pick').style.backgroundColor = MAROON;
     }
@@ -64,6 +104,7 @@ function resetBackgroundPick(){
         document.getElementById('pick').style.backgroundColor = 'rgb(236, 204, 200)';
     }
 }
+
 
 
 
@@ -119,11 +160,6 @@ function createGrid(perSide){
         container.appendChild(div);
     }
 }
-
-
-
-
-
 
 
 
@@ -219,7 +255,7 @@ function denoteMode(mode){
     }
 }
 
-denoteMode('start');
+
 
 // Helper function to create random int [min,max]
 function createRndInteger(min, max){

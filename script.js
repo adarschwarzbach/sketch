@@ -32,7 +32,7 @@ document.getElementById('pick').onmouseleave = () => resetBackgroundPick();
 document.getElementById('rainbow').onclick = () => changeMode('rainbow');
 document.getElementById('eraser').onclick = () => changeMode('eraser');
 document.getElementById('reset').onclick = () => reset();
-document.getElementById('slider').onmousemove = (e) => resize(e.target.value);
+document.getElementById('slider').onclick = (e) => resize(e.target.value);
 document.getElementById('slider').onchange = (e) => updateSizeLabel(e.target.value);
 
 
@@ -81,13 +81,11 @@ function reset(){
     createGrid(currentSize);
 }
 
-// resize grid based on slider input
+// resize grid based on slider input 
 function resize(e){
-    if(mouseDown){
         currentSize = e;
         clearGrid();
         createGrid(currentSize);
-    }
 }
 
 // update displayed grid size based on slider input

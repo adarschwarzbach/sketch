@@ -1,6 +1,6 @@
 
 // Initialize settings
-const DEFAULT_MODE = 'standard'
+const DEFAULT_MODE = 'start'
 const DEFUALT_SIZE = 40;
 const DEFAULT_BUTTON_BORDER = '3px solid #c70039';
 const SELECTED_BUTTON_BORDER = '3px solid #900c3f'
@@ -57,13 +57,19 @@ function complementBackgroundPick(){
 }
 
 function resetBackgroundPick(){
-    document.getElementById('pick').style.backgroundColor = 'rgb(236, 204, 200)';
+    if(mode == 'pick'){
+        document.getElementById('pick').style.backgroundColor = MAROON;
+    }
+    else{
+        document.getElementById('pick').style.backgroundColor = 'rgb(236, 204, 200)';
+    }
 }
 
 
 
 // change mode based on user input
 function changeMode(newMode){
+    console.log(newMode);
     mode = newMode;
     denoteMode(mode);
 }
@@ -127,10 +133,12 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+//handle current mode drawing effect
 function changeColor(e){
-    // removed mousedown to draw (line below) as it made the program buggier
     if(e.type== 'mouseover' && !mouseDown) return;
     switch(mode){
+        case 'start':
+            break
         case 'standard':
             e.target.style.backgroundColor = "#c70039";
             break;
@@ -177,6 +185,8 @@ function denoteMode(mode){
         button.style.borderStyle = '';
     })
     switch(mode){
+        case 'start':
+            break;
         case 'standard':
             document.getElementById('standard').style.border = SELECTED_BUTTON_BORDER;
             document.getElementById('standard').style.color = "white";
@@ -203,14 +213,13 @@ function denoteMode(mode){
             break;
         case 'pick':
             document.getElementById('pick').style.border = SELECTED_BUTTON_BORDER;
-            // document.getElementById('pick').style.color = "white";
-            document.getElementById('pick').style.color = MAROON
+            document.getElementById('pick').style.backgroundColor = MAROON
             document.getElementById('pick').style.borderStyle = 'outset';
             break;
     }
 }
 
-denoteMode('standard');
+denoteMode('start');
 
 // Helper function to create random int [min,max]
 function createRndInteger(min, max){

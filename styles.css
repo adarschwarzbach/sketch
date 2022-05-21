@@ -56,22 +56,11 @@
 
 }
 
-#standard:hover{
-    background-color: #c70039;
-}
-
-#pick:hover{
-    background-color: #ffc20f;
-}
 
 #reset:hover{
     opacity: 15%;
 }
 
-#eraser:hover{
-    background-color: white;
-    color: white;
-}
 
 
 #rainbow:hover{

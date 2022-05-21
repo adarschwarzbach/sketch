@@ -2,6 +2,8 @@
 // Initialize settings
 const DEFAULT_MODE = 'standard'
 const DEFUALT_SIZE = 40;
+const DEFAULT_BUTTON_BORDER = '3px solid #c70039';
+const SELECTED_BUTTON_BORDER = '3px solid #900c3f'
 
 const PURPLE = '#581845';
 const MAROON = '#900c3f';
@@ -63,6 +65,7 @@ function resetBackgroundPick(){
 // change mode based on user input
 function changeMode(newMode){
     mode = newMode;
+    denoteMode(mode);
 }
 
 
@@ -83,12 +86,9 @@ function reset(){
 
 // resize grid based on slider input 
 function resize(e){
-        currentSize = e;
-        clearGrid();
-        createGrid(currentSize);
-        if(mode=='eraser'){
-            mode = 'standard';
-        }
+    currentSize = e;
+    clearGrid();
+    createGrid(currentSize);
 }
 
 // update displayed grid size based on slider input
@@ -129,7 +129,7 @@ document.body.onmouseup = () => (mouseDown = false);
 
 function changeColor(e){
     // removed mousedown to draw (line below) as it made the program buggier
-    // if(e.type== 'mouseover' && !mouseDown) return;
+    if(e.type== 'mouseover' && !mouseDown) return;
     switch(mode){
         case 'standard':
             e.target.style.backgroundColor = "#c70039";
@@ -166,6 +166,51 @@ function changeColor(e){
             break;
     }
 }
+
+//change button effect to denote current mode
+function denoteMode(mode){
+    let buttons = document.querySelectorAll('.buttons');
+    buttons.forEach((button) =>{
+        button.style.border = DEFAULT_BUTTON_BORDER;
+        button.style.color = PURPLE;
+        button.style.backgroundColor = "rgb(236, 204, 200)"
+        button.style.borderStyle = '';
+    })
+    switch(mode){
+        case 'standard':
+            document.getElementById('standard').style.border = SELECTED_BUTTON_BORDER;
+            document.getElementById('standard').style.color = "white";
+            document.getElementById('standard').style.backgroundColor = MAROON
+            document.getElementById('standard').style.borderStyle = 'outset';
+            break;
+        case 'palette':
+            document.getElementById('palette').style.border = SELECTED_BUTTON_BORDER;
+            document.getElementById('palette').style.color = "white";
+            document.getElementById('palette').style.backgroundColor = MAROON
+            document.getElementById('palette').style.borderStyle = 'outset';
+            break;
+        case 'rainbow':
+            document.getElementById('rainbow').style.border = SELECTED_BUTTON_BORDER;
+            document.getElementById('rainbow').style.color = "white";
+            document.getElementById('rainbow').style.backgroundColor = MAROON
+            document.getElementById('rainbow').style.borderStyle = 'outset';
+            break;
+        case 'eraser':
+            document.getElementById('eraser').style.border = SELECTED_BUTTON_BORDER;
+            document.getElementById('eraser').style.color = "white";
+            document.getElementById('eraser').style.backgroundColor = MAROON
+            document.getElementById('eraser').style.borderStyle = 'outset';
+            break;
+        case 'pick':
+            document.getElementById('pick').style.border = SELECTED_BUTTON_BORDER;
+            // document.getElementById('pick').style.color = "white";
+            document.getElementById('pick').style.color = MAROON
+            document.getElementById('pick').style.borderStyle = 'outset';
+            break;
+    }
+}
+
+denoteMode('standard');
 
 // Helper function to create random int [min,max]
 function createRndInteger(min, max){

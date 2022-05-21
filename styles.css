@@ -17,9 +17,14 @@
 #controls{
     display: flex;
     gap: 12px;
+    justify-content: center;
 }
 
 .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
     flex-shrink: 0;
     border: 2px solid#c70039;
     cursor: pointer;

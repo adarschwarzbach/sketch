@@ -126,9 +126,9 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
-// function to set drawing mode based on user input
 function changeColor(e){
-    if(e.type== 'mouseover' && !mouseDown) return;
+    // removed mousedown to draw (line below) as it made the program buggier
+    // if(e.type== 'mouseover' && !mouseDown) return;
     switch(mode){
         case 'standard':
             e.target.style.backgroundColor = "#c70039";

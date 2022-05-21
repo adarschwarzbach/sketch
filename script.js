@@ -5,11 +5,11 @@ const PURPLE = '#581845';
 const MAROON = '#900c3f';
 const RED = '#c70039';
 const ORANGE = '#ff5733';
-const YELLOW = 'ffc300';
+const YELLOW = '#ffc20f';
 
 let currentSize = DEFUALT_SIZE;
 let mode = DEFAULT_MODE;
-let pickedColor = '#c70039';
+let pickedColor = RED;
 
 
 createGrid(40);;
@@ -42,7 +42,7 @@ function changePick(e){
 }
 
 function complementBackgroundPick(){
-    if(pickedColor== "#c70039"){
+    if(pickedColor== RED){
         document.getElementById('pick').style.backgroundColor = '#FC4F4F';
     }
     else{
@@ -124,7 +124,22 @@ function changeColor(e){
             e.target.style.backgroundColor = "#c70039";
             break;
         case 'palette':
-            
+            const randomColor = createRndInteger(1,5);
+            if(randomColor == 1){
+                e.target.style.backgroundColor = PURPLE;
+            }
+            else if(randomColor==2){
+                e.target.style.backgroundColor = MAROON;
+            }
+            else if(randomColor==3){
+                e.target.style.backgroundColor = RED;
+            }
+            else if(randomColor==4){
+                e.target.style.backgroundColor = ORANGE;
+            }
+            else{
+                e.target.style.backgroundColor = YELLOW;
+            }
             break;
         case 'rainbow':
             const r = createRndInteger(0,256);

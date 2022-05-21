@@ -1,3 +1,4 @@
+
 #header{
     text-align: center;
     background-color: #581845;
@@ -65,8 +66,12 @@
     to {
       background-position:20vw;
     }
-  }
+}
 
+
+#palette:hover{
+    background-image: linear-gradient(90deg, #581845 5%, #c70039 49%, #ffc20f 100%, #ff5733 80%);
+}
 
 #container{ 
     display: flex;
@@ -169,7 +174,7 @@ html{
 a{
     text-decoration: none;
     font-size: 16px;
-    color: #FC4F4F ;
+    color: #ff5733 ;
     font-weight: bold;
     display: flex;
 }

@@ -3,19 +3,18 @@
 const DEFAULT_MODE = 'standard'
 const DEFUALT_SIZE = 40;
 
-let currentSize = DEFUALT_SIZE;
-let mode = DEFAULT_MODE;
-let pickedColor = RED;
-
-createGrid(40);
-
-// Initialize colors
 const PURPLE = '#581845';
 const MAROON = '#900c3f';
 const RED = '#c70039';
 const ORANGE = '#ff5733';
 const YELLOW = '#ffc20f';
 
+let currentSize = DEFUALT_SIZE;
+let mode = DEFAULT_MODE;
+let pickedColor = RED;
+
+
+createGrid(40);
 
 
 // Add event listeners to buttons/slider
@@ -37,10 +36,7 @@ document.getElementById('slider').onmousemove = (e) => resize(e.target.value);
 document.getElementById('slider').onchange = (e) => updateSizeLabel(e.target.value);
 
 
-// change mode based on user input
-function changeMode(newMode){
-    mode = newMode;
-}
+
 
 // Change color variable from user input
 function changePick(e){
@@ -64,6 +60,20 @@ function resetBackgroundPick(){
 
 
 
+// change mode based on user input
+function changeMode(newMode){
+    mode = newMode;
+}
+
+
+// completely clear grid
+function clearGrid(){
+    let child = container.lastElementChild; 
+    while(child){
+        container.removeChild(child);
+        child = container.lastElementChild;
+    }
+}
 
 //clear grid - keep size
 function reset(){
@@ -79,16 +89,6 @@ function resize(e){
         createGrid(currentSize);
     }
 }
-
-// completely clear grid
-function clearGrid(){
-    let child = container.lastElementChild; 
-    while(child){
-        container.removeChild(child);
-        child = container.lastElementChild;
-    }
-}
-
 
 // update displayed grid size based on slider input
 function updateSizeLabel(e){
@@ -112,6 +112,12 @@ function createGrid(perSide){
         container.appendChild(div);
     }
 }
+
+
+
+
+
+
 
 
 

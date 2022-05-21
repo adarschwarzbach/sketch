@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Press+Start+2P&display=swap');
+    </style>
     <title>Document</title>
 </head>
 
 <body>
     <div id="header">
-        <h1>Etch-a-Sketch</h1>
+        <div>Etch-a-Sketch</div>
     </div>
     
     <div id="instructions">
@@ -18,8 +21,8 @@
     </div>
 
     <div id="controls">
-        <button class="buttons" id="black">Standard</button>
-        <input class="buttons" id="pick" type="color" value="#000080" />
+        <button class="buttons" id="standard">Standard</button>
+        <input class="buttons" id="pick" type="color" value="#ffc20f" />
         <button class="buttons" id="rainbow">Rainbow</button>
         <button class="buttons"  id="eraser">Eraser</button>
         <button class="buttons" id="reset">Clear</button>
@@ -28,13 +31,16 @@
     <div id="container">
     </div>
 
-    <div id="slider"> 
-        <h5></h5>
-        <input id="sizeSlider" type="range" value="40" min="1" max="80" />
+    <div id="slider-container"> 
+        <div id="gridSize"></div>
+        <input id="slider" type="range" value="40" min="1" max="80" />
     </div>
 
     <footer id="footer">
         <a id="a" href="https://www.linkedin.com/in/adarschwarzbach/" >Copyright © 2022 Adar Schwarzbach</a>
+        <a href="https://www.github.com/adarschwarzbach">
+            <img src="images/github.png" alt="">
+        </a>
     </footer>
     
     <script src="script.js"></script>

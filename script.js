@@ -1,15 +1,15 @@
-const DEFAULT_MODE = 'black'
+const DEFAULT_MODE = 'standard'
 const DEFUALT_SIZE = 40;
 
 let currentSize = DEFUALT_SIZE;
 let mode = DEFAULT_MODE;
-let pickedColor = 'black'
+let pickedColor = '#c70039'
 
 console.log(mode)
 
 
 
-document.getElementById('black').onclick = () => changeMode('black');
+document.getElementById('standard').onclick = () => changeMode('standard');
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('pick').onchange = (e) => changePick(e.target.value);
 document.getElementById('rainbow').onclick = () => changeMode('rainbow');
@@ -79,8 +79,8 @@ document.body.onmouseup = () => (mouseDown = false);
 function changeColor(e){
     if(e.type== 'mouseover' && !mouseDown) return;
     switch(mode){
-        case 'black':
-            e.target.style.backgroundColor = "black";
+        case 'standard':
+            e.target.style.backgroundColor = "#c70039";
             break;
         case 'rainbow':
             const r = createRndInteger(0,256);

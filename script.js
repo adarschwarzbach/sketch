@@ -1,15 +1,24 @@
 const DEFAULT_MODE = 'standard'
 const DEFUALT_SIZE = 40;
 
+const PURPLE = '#581845';
+const MAROON = '#900c3f';
+const RED = '#c70039';
+const ORANGE = '#ff5733';
+const YELLOW = 'ffc300';
+
 let currentSize = DEFUALT_SIZE;
 let mode = DEFAULT_MODE;
-let pickedColor = '#c70039'
+let pickedColor = '#c70039';
 
-console.log(mode)
+
+createGrid(40);;
 
 
 
 document.getElementById('standard').onclick = () => changeMode('standard');
+document.getElementById('palette').onclick = () => changeMode('palette');
+
 document.getElementById('pick').onclick = () => changeMode('pick');
 document.getElementById('pick').onchange = (e) => changePick(e.target.value);
 
@@ -33,7 +42,12 @@ function changePick(e){
 }
 
 function complementBackgroundPick(){
-    document.getElementById('pick').style.backgroundColor = pickedColor;
+    if(pickedColor== "#c70039"){
+        document.getElementById('pick').style.backgroundColor = '#FC4F4F';
+    }
+    else{
+        document.getElementById('pick').style.backgroundColor = pickedColor;
+    }
 }
 
 function resetBackgroundPick(){
@@ -94,12 +108,8 @@ function createGrid(perSide){
 
 
 
-// function reset(){
-//     createGrid(16);
-//     let mode = 'black';
-// }
 
-createGrid(40);
+
 
 
 // global to ensure user intends to draw (mousedown)
@@ -112,6 +122,9 @@ function changeColor(e){
     switch(mode){
         case 'standard':
             e.target.style.backgroundColor = "#c70039";
+            break;
+        case 'palette':
+            
             break;
         case 'rainbow':
             const r = createRndInteger(0,256);

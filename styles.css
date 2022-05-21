@@ -1,5 +1,6 @@
 
 /* fix window sizing, size bar shift */
+/* fix pallete drawing */
 
 #header{
     text-align: center;
@@ -75,26 +76,27 @@
     background-image: linear-gradient(90deg, #581845 5%, #c70039 49%, #ffc20f 100%, #ff5733 80%);
 }
 
+
+/* grid styling and proportions */
 #container{ 
     display: flex;
     flex-wrap: wrap;
     background: white;
-    width: 50%;
+    width: 40%;
+    max-width: 460px;
     margin: 24px;
     border: 4px solid #c70039;
 }
 
-/* it apears that with the container set as it is
-and the sub set is it is with width and height being an equal
-percent corrosponding to side length
-this will work for grid.
-should be easy from here out if these principles are true */
+
+/* class for squares within container */
 .sub{
     display: inline-block;
     width: 25%;
     padding-bottom: 25%;
 }
 
+/* slider bar for re-sizing grid */
 #slider-container{
     display: flex;
     flex-direction: column;
@@ -108,7 +110,7 @@ should be easy from here out if these principles are true */
 
 #slider{
     -webkit-appearance: none;
-    background-color: var(--primary-light);
+    margin-bottom: 30px;
 }
 
 #slider::-webkit-slider-runnable-track {
@@ -124,7 +126,7 @@ should be easy from here out if these principles are true */
     width: 18px;
     height: 18px;
     border-radius: 100%;
-    margin-top: -6px;
+    margin-top: -6.5px;
     background: #c70039;
   }
 
@@ -135,14 +137,14 @@ body{
     align-items: center;
     justify-items: center;
     background-color: rgb(239, 239, 239);
+    gap: 6px;
 }
 
-/* consider making a square that runs across the page left to right */
 
+/* footer */
 
 #footer{
     background-color: none;
-    padding: 4px;
     padding-bottom: 4px;
     display: flex;
     justify-content: center;
@@ -151,9 +153,6 @@ body{
     bottom: 0;
     left: 0;
     width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
     overflow: hidden;
 }
 
